@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="questionnaires-form-container">
+        <h1 class="sub-title">Questionnaire</h1>
+        <form [formGroup]="questionnaireForm" class="login-form app-card" (ngSubmit)="submitForm()">
+            <div class="input-group">
+                <label for="haveAllergies">Do you have allergies?</label>
+                <input type="checkbox" id="haveAllergies" name="haveAllergies" class="form-control" formControlName="haveAllergies">
+            </div>
+            <div formGroupName="general" class="form-group">
+                <h2>General Questions</h2>
+                <div class="input-group">
+                    <label for="gender">What is your gender?</label>
+                    <input type="text" id="gender" name="gender" class="form-control" formControlName="gender">
+                    <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="alert-danger">
+                        <div *ngIf="gender.errors?.required">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="dob">What is your date of birth?</label>
+                    <input type="date" id="dob" name="dob" class="form-control" formControlName="dob">
+                    <div *ngIf="dob.invalid && (dob.dirty || dob.touched)" class="alert-danger">
+                        <div *ngIf="dob.errors?.required">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="cob">What is your country of birth?</label>
+                    <select id="cob" name="cob" class="form-control" formControlName="cob" (change)="onSelectCountry($event.target.value)">
+                        <option *ngFor="let country of countries" [value]="country?.code">{{ country?.name }}</option>
+                    </select>
+                    <div *ngIf="cob.invalid && (cob.dirty || cob.touched)" class="alert-danger">
+                        <div *ngIf="cob.errors?.required">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="maritalStatus">What is your marital status?</label>
+                    <input type="text" id="maritalStatus" name="maritalStatus" class="form-control" formControlName="maritalStatus">
+                    <div *ngIf="maritalStatus.invalid && (maritalStatus.dirty || maritalStatus.touched)" class="alert-danger">
+                        <div *ngIf="maritalStatus.errors?.required">
+                            This field is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div formGroupName="intoxications" class="form-group">
+                <h2>Intoxications</h2>
+                <div class="input-group">
+                    <label for="smoke">Do you smoke?</label>
+                    <input type="checkbox" id="smoke" name="smoke" class="form-control" formControlName="smoke">
+                </div>
+                <div class="input-group">
+                    <label for="drink">Do you drink alchohol?</label>
+                    <input type="checkbox" id="drink" name="drink" class="form-control" formControlName="drink">
+                </div>
+            </div>
+          <button type="submit" class="form-submit">Generate Questionnaire Response</button>
+        </form>    
+    </div>
+    <div class="result">
+        <pre><p>{{result | json}}</p></pre>
+    </div>
+  </div>
+  

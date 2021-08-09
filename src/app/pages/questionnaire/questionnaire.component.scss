@@ -1,0 +1,40 @@
+.questionnaires-form-container {
+    margin: 10% auto 10%;
+    max-width: 350px;
+    .sub-title {
+        font-weight: bold;
+        font-size: 30px;
+        margin-bottom: 30px;
+
+    }
+
+    .form-group {
+        margin: 20px 0;
+    }
+
+    .input-group {
+        margin: 20px 0;
+        label {
+            margin-right: 20px;
+        }
+    }
+
+    .form-submit {
+        margin-top: 30px
+    }
+
+    .alert-danger {
+        color: red;
+    }
+}
+
+.result {
+    max-width: 350px;
+    margin: auto;
+}
+
+@media (max-width: 568px) {
+    .form-control {
+        display: block;
+    }
+}
